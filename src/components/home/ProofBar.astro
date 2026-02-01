@@ -1,23 +1,54 @@
 ---
-// Placeholder logos - replace with actual client/partner logos
-const logos = [
-  { name: 'Client 1', src: '/images/logos/placeholder.svg' },
-  { name: 'Client 2', src: '/images/logos/placeholder.svg' },
-  { name: 'Client 3', src: '/images/logos/placeholder.svg' },
-  { name: 'Client 4', src: '/images/logos/placeholder.svg' },
-  { name: 'Client 5', src: '/images/logos/placeholder.svg' },
+import { getLocaleFromPath, type Locale } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale: propLocale } = Astro.props;
+const locale = propLocale || getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+
+// Client logos - order matters for visual balance
+const clients = [
+  { name: 'BNP Paribas Fortis', src: '/logos/clients/bnp-paribas-fortis.svg' },
+  { name: 'Belfius', src: '/logos/clients/belfius.svg' },
+  { name: 'HMS Networks', src: '/logos/clients/hms-networks.svg' },
+  { name: 'speos', src: '/logos/clients/speos.svg' },
+  { name: 'Digitas', src: '/logos/clients/digitas.svg' },
 ];
+
+// Check if file exists (build-time check not possible, so we use fallback in template)
 ---
 
-<section class="py-12 border-y border-cloud bg-white">
+<section
+  class="py-12 border-y border-cloud bg-white"
+  aria-label={t('proofbar.title')}
+>
   <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
     <p class="text-center text-sm text-mist mb-8">
-      Ils m'ont fait confiance
+      {t('proofbar.title')}
     </p>
-    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-60">
-      {logos.map(logo => (
-        <div class="h-8 w-24 bg-cloud rounded flex items-center justify-center">
-          <span class="text-xs text-silver">{logo.name}</span>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+      {clients.map(client => (
+        <div class="flex items-center justify-center h-[22px] md:h-[26px]">
+          <img
+            src={client.src}
+            alt={client.name}
+            width="120"
+            height="26"
+            loading="lazy"
+            decoding="async"
+            class="h-[18px] md:h-[22px] w-auto max-w-[100px] md:max-w-[120px] object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            onerror={`this.style.display='none'; this.nextElementSibling.style.display='block';`}
+          />
+          <span
+            class="hidden text-xs md:text-sm font-medium text-mist uppercase tracking-wider"
+            aria-hidden="true"
+          >
+            {client.name}
+          </span>
         </div>
       ))}
     </div>

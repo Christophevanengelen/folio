@@ -28,6 +28,9 @@ export const ui = {
     // Language
     'lang.switch': 'Language',
     'lang.current': 'EN',
+
+    // ProofBar
+    'proofbar.title': 'Trusted by',
   },
   fr: {
     // Navigation
@@ -56,6 +59,9 @@ export const ui = {
     // Language
     'lang.switch': 'Langue',
     'lang.current': 'FR',
+
+    // ProofBar
+    'proofbar.title': "Ils m'ont fait confiance",
   },
 } as const;
 
