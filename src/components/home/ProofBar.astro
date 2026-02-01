@@ -32,15 +32,15 @@ const clients = [
     </p>
     <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
       {clients.map(client => (
-        <div class="flex items-center justify-center h-[22px] md:h-[26px]">
+        <div class="flex items-center justify-center h-5 md:h-6">
           <img
             src={client.src}
             alt={client.name}
             width="120"
-            height="26"
+            height="24"
             loading="lazy"
             decoding="async"
-            class="h-[18px] md:h-[22px] w-auto max-w-[100px] md:max-w-[120px] object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            class="h-5 md:h-6 w-auto max-w-[100px] md:max-w-[120px] object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
             onerror={`this.style.display='none'; this.nextElementSibling.style.display='block';`}
           />
           <span
