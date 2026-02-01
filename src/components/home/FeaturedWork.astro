@@ -1,0 +1,148 @@
+---
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+
+const featuredProject = {
+  slug: 'wejustice',
+  title: 'WeJustice',
+  tagline: 'Plateforme LegalTech · De 0 à la V1 en solo',
+  description: 'Strategy, product, design et développement front-end — une plateforme qui rend le droit accessible.',
+  role: 'CXO & Partner',
+  duration: '12 semaines',
+  impact: '+40% conversion',
+  tags: ['LegalTech', 'B2B SaaS', '0→1', 'Full Ownership'],
+  image: '/images/projects/wejustice-hero.jpg'
+};
+
+const otherProjects = [
+  {
+    slug: 'project-2',
+    title: 'Projet 2',
+    tagline: 'Design System & Ops',
+    description: 'Structuration et scaling d\'un design system pour une équipe de 15 designers.',
+    tags: ['Design System', 'Design Ops'],
+    image: '/images/projects/placeholder.jpg'
+  },
+  {
+    slug: 'project-3',
+    title: 'Projet 3',
+    tagline: 'Transformation digitale',
+    description: 'Accompagnement stratégique et delivery d\'une refonte produit.',
+    tags: ['Strategy', 'Product'],
+    image: '/images/projects/placeholder.jpg'
+  }
+];
+---
+
+<section class="py-[var(--space-section)]">
+  <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+      <div>
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-2">
+          Projets sélectionnés
+        </h2>
+        <p class="text-mist">
+          Des cas concrets qui illustrent mon approche.
+        </p>
+      </div>
+      <Button href="/work" variant="ghost" size="sm">
+        Voir tous les projets
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </Button>
+    </div>
+
+    <!-- Featured Project (Large) -->
+    <a
+      href={`/work/${featuredProject.slug}`}
+      class="group block mb-8 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-normal"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <!-- Image -->
+        <div class="aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
+          <span class="text-accent/40 text-sm">Image WeJustice</span>
+        </div>
+
+        <!-- Content -->
+        <div class="p-8 lg:p-12 flex flex-col justify-center">
+          <div class="flex flex-wrap gap-2 mb-4">
+            {featuredProject.tags.map(tag => (
+              <Badge variant="accent">{tag}</Badge>
+            ))}
+          </div>
+
+          <h3 class="text-2xl lg:text-3xl font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
+            {featuredProject.title}
+          </h3>
+
+          <p class="text-accent font-medium mb-4">
+            {featuredProject.tagline}
+          </p>
+
+          <p class="text-mist mb-6">
+            {featuredProject.description}
+          </p>
+
+          <!-- Metrics -->
+          <div class="flex flex-wrap gap-6 mb-6">
+            <div>
+              <p class="text-xs text-mist uppercase tracking-wider mb-1">Rôle</p>
+              <p class="text-sm font-medium text-ink">{featuredProject.role}</p>
+            </div>
+            <div>
+              <p class="text-xs text-mist uppercase tracking-wider mb-1">Durée</p>
+              <p class="text-sm font-medium text-ink">{featuredProject.duration}</p>
+            </div>
+            <div>
+              <p class="text-xs text-mist uppercase tracking-wider mb-1">Impact</p>
+              <p class="text-sm font-medium text-accent">{featuredProject.impact}</p>
+            </div>
+          </div>
+
+          <span class="inline-flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
+            Lire le case study
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Other Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {otherProjects.map(project => (
+        <a
+          href={`/work/${project.slug}`}
+          class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-normal"
+        >
+          <!-- Image placeholder -->
+          <div class="aspect-[16/9] bg-gradient-to-br from-cloud to-silver/20 flex items-center justify-center">
+            <span class="text-silver text-sm">Image projet</span>
+          </div>
+
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-3">
+              {project.tags.map(tag => (
+                <Badge variant="muted">{tag}</Badge>
+              ))}
+            </div>
+
+            <h3 class="text-lg font-semibold text-ink mb-1 group-hover:text-accent transition-colors">
+              {project.title}
+            </h3>
+
+            <p class="text-sm text-accent font-medium mb-2">
+              {project.tagline}
+            </p>
+
+            <p class="text-sm text-mist">
+              {project.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

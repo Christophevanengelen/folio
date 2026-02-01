@@ -1,0 +1,25 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="py-[var(--space-section)]">
+  <div class="mx-auto max-w-[var(--space-container-narrow)] px-[var(--space-gutter)] text-center">
+    <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-4">
+      Un projet complexe à débloquer ?
+    </h2>
+    <p class="text-lg text-mist mb-8 max-w-xl mx-auto">
+      Discutons de vos enjeux. Premier échange de 30 minutes, sans engagement.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <Button href="/contact" variant="primary" size="lg">
+        Planifier un appel
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      </Button>
+      <Button href="mailto:hello@christophevanengelen.com" variant="ghost" size="lg">
+        M'envoyer un email
+      </Button>
+    </div>
+  </div>
+</section>

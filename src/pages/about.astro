@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+const timeline = [
+  {
+    period: '2020 – Présent',
+    title: 'Design Leader & Consultant indépendant',
+    description: 'Missions de transformation, product strategy, et leadership interim pour startups et grandes entreprises.'
+  },
+  {
+    period: '2016 – 2020',
+    title: 'Head of Design @ [Entreprise]',
+    description: 'Direction d\'une équipe de 12 designers, création du design system, delivery de 4 produits majeurs.'
+  },
+  {
+    period: '2012 – 2016',
+    title: 'Senior UX Designer @ [Agence/Startup]',
+    description: 'Consulting UX pour clients B2B SaaS, service design, facilitation workshops.'
+  },
+  {
+    period: '2008 – 2012',
+    title: 'UX/UI Designer',
+    description: 'Débuts en agence, projets variés, construction des fondamentaux.'
+  }
+];
+
+const values = [
+  {
+    title: 'Impact > Esthétique',
+    description: 'Un design qui ne résout pas de problème business n\'est qu\'une décoration. Je mesure mon travail à ses résultats.'
+  },
+  {
+    title: 'Clarté > Complexité',
+    description: 'La complexité est facile. Rendre simple ce qui est complexe, c\'est le vrai travail.'
+  },
+  {
+    title: 'Exécution > Stratégie seule',
+    description: 'Une bonne stratégie mal exécutée vaut zéro. Je m\'engage sur la livraison, pas juste les slides.'
+  },
+  {
+    title: 'Collaboration > Ego',
+    description: 'Les meilleures solutions émergent du collectif. Mon rôle est de faciliter, pas d\'imposer.'
+  }
+];
+
+const howIWork = [
+  {
+    title: 'Comprendre avant de proposer',
+    description: 'Je prends le temps de comprendre votre contexte, vos contraintes, votre culture. Les solutions prêtes-à-l\'emploi marchent rarement.'
+  },
+  {
+    title: 'Itérer rapidement',
+    description: 'Prototypes, tests, feedbacks, ajustements. Je préfère 10 petites itérations qu\'un Big Bang.'
+  },
+  {
+    title: 'Documenter & transférer',
+    description: 'Mon objectif est de vous rendre autonome. Je documente, je forme, je prépare ma sortie dès le jour 1.'
+  },
+  {
+    title: 'Dire les choses',
+    description: 'Je ne suis pas là pour être agréable, mais pour être utile. J\'apporte une opinion tranchée, argumentée, et ouverte au débat.'
+  }
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Design leader & product strategist avec +15 ans d'expérience. Mon approche : impact, clarté, exécution."
+>
+  <section class="py-[var(--space-section)]">
+    <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
+      <!-- Hero -->
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 mb-20">
+        <!-- Photo placeholder -->
+        <div class="lg:col-span-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl flex items-center justify-center">
+            <span class="text-accent/40">Photo</span>
+          </div>
+        </div>
+
+        <!-- Intro -->
+        <div class="lg:col-span-3">
+          <h1 class="text-[length:var(--text-h1)] font-semibold text-ink mb-6">
+            Christophe Van Engelen
+          </h1>
+
+          <p class="text-xl text-accent font-medium mb-6">
+            Design Leader · Product Strategist · Builder
+          </p>
+
+          <div class="prose prose-lg text-mist space-y-4 mb-8">
+            <p>
+              Depuis +15 ans, j'aide les organisations à transformer des problèmes complexes
+              en produits qui livrent. Mon terrain de jeu : le B2B SaaS, la transformation digitale,
+              et les projets où "c'est compliqué" est la norme.
+            </p>
+            <p>
+              J'ai dirigé des équipes design, créé des design systems, lancé des produits de 0 à 1,
+              et accompagné des transformations à grande échelle. Ce qui me motive : le passage
+              de l'idée au résultat mesurable.
+            </p>
+            <p>
+              Aujourd'hui, je travaille en indépendant — missions de consulting, rôles de leadership interim,
+              et projets entrepreneuriaux comme <a href="/work/wejustice" class="text-accent hover:underline">WeJustice</a>.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <Button href="/contact" variant="primary">
+              Me contacter
+            </Button>
+            <Button href="/work" variant="outline">
+              Voir mes réalisations
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mb-20">
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-8">
+          Parcours
+        </h2>
+
+        <div class="space-y-6">
+          {timeline.map((item, index) => (
+            <div class="flex gap-6 md:gap-8">
+              <div class="w-32 md:w-40 flex-shrink-0">
+                <p class="text-sm font-medium text-accent">{item.period}</p>
+              </div>
+              <div class="pb-6 border-b border-cloud flex-1">
+                <h3 class="font-semibold text-ink mb-1">{item.title}</h3>
+                <p class="text-mist">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="mb-20">
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-8">
+          Valeurs
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {values.map(value => (
+            <div class="bg-white rounded-xl p-6 border border-cloud">
+              <h3 class="font-semibold text-ink mb-2">{value.title}</h3>
+              <p class="text-mist">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- How I Work -->
+      <div class="mb-20">
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-8">
+          Comment je travaille
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {howIWork.map((item, index) => (
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-accent-subtle text-accent font-semibold flex items-center justify-center flex-shrink-0">
+                {index + 1}
+              </div>
+              <div>
+                <h3 class="font-semibold text-ink mb-1">{item.title}</h3>
+                <p class="text-mist text-sm">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-accent-subtle rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-[length:var(--text-h3)] font-semibold text-ink mb-4">
+          Envie de travailler ensemble ?
+        </h2>
+        <p class="text-mist mb-6 max-w-lg mx-auto">
+          Je suis disponible pour des missions de consulting, du leadership interim,
+          ou des collaborations sur des projets ambitieux.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">
+          Discutons
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

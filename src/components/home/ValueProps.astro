@@ -1,0 +1,62 @@
+---
+const pillars = [
+  {
+    title: 'Strategy',
+    description: 'Aligner les parties prenantes, cadrer la vision, définir la roadmap.',
+    items: ['Discovery & Research', 'Product Strategy', 'Stakeholder Alignment', 'Vision & Roadmap']
+  },
+  {
+    title: 'Product',
+    description: 'Concevoir des expériences qui résolvent des vrais problèmes.',
+    items: ['Service Design', 'UX/UI Design', 'Prototypage', 'User Testing']
+  },
+  {
+    title: 'Execution',
+    description: "Structurer, livrer, scaler. De l'idée au produit en production.",
+    items: ['Design Ops', 'Design Systems', 'Team Leadership', 'Delivery']
+  }
+];
+---
+
+<section class="py-[var(--space-section)] bg-snow">
+  <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
+    <div class="text-center mb-12">
+      <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-4">
+        Une approche complète
+      </h2>
+      <p class="text-mist text-lg max-w-2xl mx-auto">
+        De la stratégie à l'exécution, j'interviens sur l'ensemble de la chaîne de valeur produit.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {pillars.map((pillar, index) => (
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-normal">
+          <!-- Number indicator -->
+          <div class="w-10 h-10 rounded-lg bg-accent-subtle text-accent font-semibold flex items-center justify-center mb-6">
+            0{index + 1}
+          </div>
+
+          <h3 class="text-xl font-semibold text-ink mb-3">
+            {pillar.title}
+          </h3>
+
+          <p class="text-mist mb-6">
+            {pillar.description}
+          </p>
+
+          <ul class="space-y-2">
+            {pillar.items.map(item => (
+              <li class="flex items-center gap-2 text-sm text-slate">
+                <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

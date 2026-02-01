@@ -1,0 +1,194 @@
+---
+title: "WeJustice"
+tagline: "Plateforme LegalTech · De 0 à la V1 en solo"
+description: "Comment j'ai conçu et livré une plateforme qui rend le droit accessible, en combinant strategy, product design et développement front-end."
+role: "CXO & Partner"
+duration: "12 semaines"
+year: "2024"
+team: "Solo (+ 1 dev back-end)"
+tags: ["LegalTech", "B2B SaaS", "0→1", "Full Ownership"]
+impact:
+  - metric: "Conversion"
+    value: "+40%"
+  - metric: "Time to value"
+    value: "-60%"
+  - metric: "NPS"
+    value: "72"
+heroImage: "/images/projects/wejustice-hero.jpg"
+ogImage: "/images/og/wejustice.png"
+---
+
+## Impact Snapshot
+
+<div class="impact-snapshot">
+
+**Le problème** : Les justiciables peinent à comprendre leurs droits et à trouver l'avocat adapté. Le parcours est opaque, anxiogène, et souvent abandonné.
+
+**Mon rôle** : Ownership complet — de la vision produit au design system, du prototype aux composants React en production.
+
+**Contraintes** : Budget limité, time-to-market critique (3 mois), nécessité de valider le product-market fit rapidement.
+
+**Résultat principal** : Une V1 fonctionnelle qui a converti 40% mieux que le benchmark marché, avec un NPS de 72.
+
+</div>
+
+## Contexte & Contraintes
+
+WeJustice est née d'un constat simple : **le droit est inaccessible**. Pas techniquement — les informations existent — mais cognitivement. Le jargon, la complexité des procédures, l'opacité des tarifs créent une barrière qui décourage la majorité des justiciables.
+
+### Les contraintes initiales
+
+- **Budget serré** : pas de levée de fonds, bootstrapping pur
+- **Délai court** : 12 semaines pour une V1 démontrable
+- **Équipe minimale** : moi en full-stack produit + 1 dev back-end
+- **Marché sensible** : le juridique est régulé, les avocats méfiants envers le digital
+
+### Ce que je devais prouver
+
+1. Que le modèle était viable (conversion, rétention)
+2. Que l'expérience pouvait réduire l'anxiété des utilisateurs
+3. Que les avocats accepteraient de jouer le jeu
+
+## Approche
+
+### Phase 1 : Alignment (Semaines 1-2)
+
+Avant de designer quoi que ce soit, j'ai passé 2 semaines à **comprendre l'écosystème** :
+
+- 12 interviews utilisateurs (justiciables ayant vécu un parcours juridique)
+- 8 interviews avocats (de différentes spécialités et tailles de cabinet)
+- Analyse concurrentielle de 15 plateformes (FR, UK, US)
+- Workshop de vision avec les co-fondateurs
+
+**Output** : Une vision produit claire, des personas validés, et une roadmap priorisée par impact/effort.
+
+### Phase 2 : Discovery (Semaines 3-5)
+
+J'ai utilisé une approche **"design sprint condensé"** pour valider rapidement les hypothèses clés :
+
+- Mapping du parcours utilisateur actuel (pain points identifiés)
+- Sketching de 3 directions de solution
+- Prototype haute-fidélité sur Figma
+- Tests utilisateurs sur 8 personnes
+
+**Insight clé** : Les utilisateurs ne cherchent pas un avocat. Ils cherchent une **réponse à leur problème**. Le matching avocat doit être une conséquence, pas le point d'entrée.
+
+### Phase 3 : Delivery (Semaines 6-12)
+
+J'ai structuré la delivery en **sprints de 2 semaines** avec des releases incrémentales :
+
+- Semaine 6-7 : Design system + composants de base
+- Semaine 8-9 : Parcours "diagnostic juridique"
+- Semaine 10-11 : Matching + profils avocats
+- Semaine 12 : Polish, tests, optimisation perf
+
+## Décisions clés
+
+<div class="decision-block">
+
+### Décision #1 : Diagnostic avant matching
+
+**Options envisagées :**
+- A. Landing classique avec recherche par spécialité
+- B. Questionnaire de diagnostic guidé
+- C. Chat conversationnel avec IA
+
+**Critères de choix :** Conversion, coût de dev, confiance utilisateur
+
+**Arbitrage :** Option B. Le questionnaire structure la demande, réduit l'anxiété ("je ne sais pas par où commencer"), et génère des données pour un meilleur matching.
+
+**Impact :** +40% de complétion du parcours vs. le benchmark.
+
+</div>
+
+<div class="decision-block">
+
+### Décision #2 : Transparence tarifaire
+
+**Options envisagées :**
+- A. Pas de prix (contact pour devis)
+- B. Fourchettes indicatives
+- C. Prix fixes par type de prestation
+
+**Critères de choix :** Confiance, faisabilité (acceptation avocats), différenciation
+
+**Arbitrage :** Option B avec engagement des avocats. On affiche des fourchettes validées, ce qui crée de la confiance sans rigidifier l'offre.
+
+**Impact :** Réduction de 35% des abandons à l'étape "contact avocat".
+
+</div>
+
+<div class="decision-block">
+
+### Décision #3 : Design system "from scratch" vs. library
+
+**Options envisagées :**
+- A. Utiliser une UI library (Chakra, Radix)
+- B. Design system custom complet
+- C. Hybride (primitives custom + library pour complexe)
+
+**Critères de choix :** Vélocité, cohérence, scalabilité future
+
+**Arbitrage :** Option C. Primitives custom (boutons, inputs, cards) pour la brand, Radix pour les composants complexes (modales, dropdowns).
+
+**Impact :** 60% de gain de temps sur le dev front, cohérence visuelle maintenue.
+
+</div>
+
+## Livraison
+
+### Design System
+
+Un système léger mais cohérent :
+- 8 couleurs (4 neutres, 2 accent, 2 semantic)
+- 6 niveaux typographiques
+- Spacing en multiples de 4px
+- 12 composants de base documentés
+
+### Flows principaux
+
+1. **Diagnostic** : 5 questions adaptatives → profil juridique
+2. **Matching** : Algorithme simple (spécialité × localisation × budget)
+3. **Contact** : Demande structurée envoyée à 3 avocats max
+
+### Stack technique
+
+- **Design** : Figma (components + prototypes)
+- **Front** : React + TypeScript + Tailwind
+- **Back** : Node.js + PostgreSQL (géré par le co-fondateur technique)
+
+## Résultats & Apprentissages
+
+### Métriques
+
+| Métrique | Objectif | Résultat |
+|----------|----------|----------|
+| Taux de conversion | 15% | **21%** |
+| NPS | 50 | **72** |
+| Time to first contact | < 5 min | **3 min 20s** |
+| Avocats onboardés (M1) | 30 | **47** |
+
+### Ce qui a bien fonctionné
+
+- **Le diagnostic guidé** : réduit la charge cognitive, structure la demande
+- **La transparence tarifaire** : différenciateur fort, confiance immédiate
+- **L'approche solo full-stack** : décisions rapides, cohérence end-to-end
+
+### Ce que j'aurais fait différemment
+
+- **Plus de tests A/B early** : certaines hypothèses auraient pu être validées plus tôt
+- **Onboarding avocats** : sous-estimé le temps nécessaire pour convaincre les early adopters
+- **Documentation** : le design system aurait mérité une doc plus complète pour la passation
+
+## What I'd do next
+
+Si je continuais sur ce projet :
+
+1. **Automatiser le matching** avec du ML (actuellement rule-based)
+2. **Ajouter un espace client** pour suivre son dossier
+3. **Intégrer des contenus éducatifs** pour réduire l'anxiété en amont
+4. **Scaler l'équipe design** et passer d'un DS Figma à un DS code-first
+
+---
+
+*Intéressé par une approche similaire pour votre produit ? [Discutons-en](/contact).*

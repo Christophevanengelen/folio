@@ -1,0 +1,38 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+  container?: 'default' | 'narrow' | 'wide' | 'none';
+}
+
+const {
+  id,
+  class: className = '',
+  size = 'md',
+  container = 'default',
+} = Astro.props;
+
+const sectionSizes = {
+  sm: 'py-[var(--space-section-sm)]',
+  md: 'py-[var(--space-section)]',
+  lg: 'py-[calc(var(--space-section)*1.25)]',
+};
+
+const containerSizes = {
+  default: 'max-w-[var(--space-container)]',
+  narrow: 'max-w-[var(--space-container-narrow)]',
+  wide: 'max-w-[var(--space-container-wide)]',
+  none: '',
+};
+---
+
+<section id={id} class:list={[sectionSizes[size], className]}>
+  {container !== 'none' ? (
+    <div class:list={['mx-auto px-[var(--space-gutter)]', containerSizes[container]]}>
+      <slot />
+    </div>
+  ) : (
+    <slot />
+  )}
+</section>

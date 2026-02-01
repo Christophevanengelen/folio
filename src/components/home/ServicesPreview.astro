@@ -1,0 +1,79 @@
+---
+import Button from '../ui/Button.astro';
+
+const services = [
+  {
+    title: 'Discovery & Strategy',
+    duration: '2–6 semaines',
+    description: 'Cadrage, research, définition de la vision et roadmap produit.',
+    forWho: 'Startup en lancement, entreprise en pivotage',
+    deliverables: ['User Research', 'Product Vision', 'Roadmap', 'Business Case']
+  },
+  {
+    title: 'Design Ops & Systems',
+    duration: '3–6 mois',
+    description: 'Structurer et scaler votre pratique design avec un système cohérent.',
+    forWho: 'Scale-up, équipe design en croissance',
+    deliverables: ['Design System', 'Process & Governance', 'Documentation', 'Formation']
+  },
+  {
+    title: 'Product Leadership',
+    duration: '6+ mois',
+    description: 'Head of Design / CPO interim — structuration équipe et delivery.',
+    forWho: 'Entreprise en transformation, besoin de leadership',
+    deliverables: ['Team Structure', 'Hiring', 'Culture', 'Delivery']
+  }
+];
+---
+
+<section class="py-[var(--space-section)] bg-ink text-cloud">
+  <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
+    <div class="text-center mb-12">
+      <h2 class="text-[length:var(--text-h2)] font-semibold text-white mb-4">
+        Comment je peux vous aider
+      </h2>
+      <p class="text-silver text-lg max-w-2xl mx-auto">
+        Des formats adaptés à vos besoins, de la mission ponctuelle au leadership long terme.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {services.map(service => (
+        <div class="bg-white/5 backdrop-blur rounded-xl p-8 border border-white/10 hover:border-accent/50 transition-colors duration-normal">
+          <p class="text-accent text-sm font-medium mb-3">
+            {service.duration}
+          </p>
+
+          <h3 class="text-xl font-semibold text-white mb-3">
+            {service.title}
+          </h3>
+
+          <p class="text-silver mb-4">
+            {service.description}
+          </p>
+
+          <p class="text-xs text-mist uppercase tracking-wider mb-2">
+            Pour qui
+          </p>
+          <p class="text-sm text-cloud mb-6">
+            {service.forWho}
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            {service.deliverables.map(item => (
+              <span class="text-xs px-2 py-1 bg-white/10 rounded text-silver">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <Button href="/services" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-ink">
+        En savoir plus sur mes services
+      </Button>
+    </div>
+  </div>
+</section>

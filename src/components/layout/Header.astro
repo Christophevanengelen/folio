@@ -1,0 +1,121 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/notes', label: 'Notes' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 bg-snow/80 backdrop-blur-md border-b border-cloud">
+  <nav class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)] h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="font-semibold text-ink hover:text-accent transition-colors duration-fast"
+      aria-label="Christophe Van Engelen - Accueil"
+    >
+      CVE
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex items-center gap-8" role="list">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm font-medium transition-colors duration-fast",
+              isActive(link.href)
+                ? "text-accent"
+                : "text-mist hover:text-ink"
+            ]}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA Button -->
+    <a
+      href="/contact"
+      class="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors duration-fast"
+    >
+      Contact
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button
+      type="button"
+      class="md:hidden p-2 text-mist hover:text-ink transition-colors"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      id="mobile-menu-button"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden absolute top-full left-0 right-0 bg-white border-b border-cloud shadow-lg"
+  >
+    <ul class="px-[var(--space-gutter)] py-4 space-y-2" role="list">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "block py-2 text-base font-medium transition-colors",
+              isActive(link.href)
+                ? "text-accent"
+                : "text-mist hover:text-ink"
+            ]}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2">
+        <a
+          href="/contact"
+          class="block w-full text-center py-3 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden');
+    menuButton.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+      mobileMenu?.classList.add('hidden');
+      menuButton?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

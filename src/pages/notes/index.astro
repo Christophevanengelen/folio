@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/ui/Badge.astro';
+
+// Placeholder articles - will be replaced with MDX content
+const articles = [
+  {
+    slug: 'design-systems-scale',
+    title: 'Comment scaler un design system (vraiment)',
+    excerpt: 'Les tokens et composants ne suffisent pas. Ce qui fait la différence : la gouvernance, l\'adoption, et la culture.',
+    date: '2024-01-15',
+    readTime: '8 min',
+    tags: ['Design System', 'Design Ops']
+  },
+  {
+    slug: 'product-strategy-b2b',
+    title: 'Product strategy en B2B : les pièges à éviter',
+    excerpt: 'Le B2B n\'est pas du B2C avec des gens en costume. Retour sur les spécificités qui changent tout.',
+    date: '2024-01-08',
+    readTime: '6 min',
+    tags: ['Strategy', 'B2B']
+  }
+];
+
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<BaseLayout
+  title="Notes"
+  description="Réflexions sur le design, le produit, et la transformation digitale."
+>
+  <section class="py-[var(--space-section)]">
+    <div class="mx-auto max-w-[var(--space-container-narrow)] px-[var(--space-gutter)]">
+      <!-- Header -->
+      <div class="mb-12">
+        <h1 class="text-[length:var(--text-h1)] font-semibold text-ink mb-4">
+          Notes
+        </h1>
+        <p class="text-lg text-mist">
+          Réflexions, retours d'expérience, et opinions tranchées sur le design,
+          le produit, et la transformation digitale.
+        </p>
+      </div>
+
+      <!-- Articles list -->
+      {articles.length > 0 ? (
+        <div class="space-y-8">
+          {articles.map(article => (
+            <a
+              href={`/notes/${article.slug}`}
+              class="group block"
+            >
+              <article class="py-6 border-b border-cloud">
+                <div class="flex flex-wrap items-center gap-3 mb-3">
+                  <time class="text-sm text-mist" datetime={article.date}>
+                    {formatDate(article.date)}
+                  </time>
+                  <span class="text-silver">·</span>
+                  <span class="text-sm text-mist">{article.readTime}</span>
+                </div>
+
+                <h2 class="text-xl font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
+                  {article.title}
+                </h2>
+
+                <p class="text-mist mb-4">
+                  {article.excerpt}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {article.tags.map(tag => (
+                    <Badge variant="muted">{tag}</Badge>
+                  ))}
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-mist">
+            Pas encore d'articles publiés. Revenez bientôt !
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

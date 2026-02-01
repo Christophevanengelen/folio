@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const services = [
+  {
+    id: 'discovery',
+    title: 'Discovery & Strategy',
+    duration: '2–6 semaines',
+    description: 'Cadrer la vision, comprendre les utilisateurs, définir la roadmap. Idéal pour lancer un nouveau produit ou pivoter une offre existante.',
+    forWho: [
+      'Startup en phase de lancement',
+      'Entreprise en pivotage produit',
+      'Organisation cherchant à valider une opportunité'
+    ],
+    deliverables: [
+      'Research utilisateur (interviews, surveys)',
+      'Analyse concurrentielle',
+      'Vision produit & proposition de valeur',
+      'Roadmap priorisée',
+      'Business case & KPIs'
+    ],
+    approach: 'Workshops collaboratifs + recherche terrain + synthèse actionnable.',
+    ideal: 'Vous avez une idée mais pas de certitude. Vous voulez investir intelligemment.'
+  },
+  {
+    id: 'design-ops',
+    title: 'Design Ops & Systems',
+    duration: '3–6 mois',
+    description: 'Structurer votre pratique design pour scaler. Design system, process, gouvernance, outillage.',
+    forWho: [
+      'Scale-up avec équipe design en croissance',
+      'Entreprise avec dette design accumulée',
+      'Organisation multi-produits sans cohérence'
+    ],
+    deliverables: [
+      'Audit design existant',
+      'Design system (Figma + code)',
+      'Process & rituels design',
+      'Documentation & guidelines',
+      'Formation équipe'
+    ],
+    approach: 'Audit → Quick wins → Fondations → Scaling progressif.',
+    ideal: 'Vous avez plusieurs designers, plusieurs produits, et un manque de cohérence.'
+  },
+  {
+    id: 'leadership',
+    title: 'Product Leadership',
+    duration: '6+ mois',
+    description: "Head of Design ou CPO interim. Structurer l'équipe, installer la culture, délivrer les projets critiques.",
+    forWho: [
+      'Entreprise en transformation digitale',
+      'Organisation sans leadership design',
+      'Scale-up en hypercroissance'
+    ],
+    deliverables: [
+      'Structuration équipe (hiring, onboarding)',
+      'Culture & pratiques design',
+      'Delivery des projets clés',
+      'Alignement stakeholders',
+      'Passation documentée'
+    ],
+    approach: 'Immersion → Diagnostic → Roadmap RH/Orga → Exécution → Passation.',
+    ideal: "Vous avez besoin d'un leader design expérimenté, maintenant, pour une période définie."
+  }
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Discovery, Design Ops, Leadership — des formats adaptés à vos besoins, de la mission ponctuelle au leadership long terme."
+>
+  <section class="py-[var(--space-section)]">
+    <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
+      <!-- Header -->
+      <div class="max-w-2xl mb-16">
+        <h1 class="text-[length:var(--text-h1)] font-semibold text-ink mb-4">
+          Services
+        </h1>
+        <p class="text-lg text-mist">
+          Des formats adaptés à vos besoins — de la mission ponctuelle au leadership long terme.
+          Chaque engagement est taillé sur mesure.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div class="space-y-12">
+        {services.map((service, index) => (
+          <div
+            id={service.id}
+            class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-cloud"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+              <!-- Main content -->
+              <div class="lg:col-span-2">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                  <Badge variant="accent">{service.duration}</Badge>
+                  <span class="text-sm text-mist">0{index + 1}</span>
+                </div>
+
+                <h2 class="text-2xl md:text-3xl font-semibold text-ink mb-4">
+                  {service.title}
+                </h2>
+
+                <p class="text-lg text-mist mb-6">
+                  {service.description}
+                </p>
+
+                <div class="mb-6">
+                  <h3 class="text-sm font-medium text-ink uppercase tracking-wider mb-3">
+                    Approche
+                  </h3>
+                  <p class="text-slate">
+                    {service.approach}
+                  </p>
+                </div>
+
+                <div class="p-4 bg-accent-subtle rounded-lg">
+                  <p class="text-sm text-accent">
+                    <strong>Idéal si :</strong> {service.ideal}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Sidebar -->
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-sm font-medium text-ink uppercase tracking-wider mb-3">
+                    Pour qui
+                  </h3>
+                  <ul class="space-y-2">
+                    {service.forWho.map(item => (
+                      <li class="flex items-start gap-2 text-sm text-slate">
+                        <svg class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 class="text-sm font-medium text-ink uppercase tracking-wider mb-3">
+                    Livrables
+                  </h3>
+                  <ul class="space-y-2">
+                    {service.deliverables.map(item => (
+                      <li class="flex items-start gap-2 text-sm text-slate">
+                        <span class="text-silver">→</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 text-center">
+        <h2 class="text-[length:var(--text-h3)] font-semibold text-ink mb-4">
+          Pas sûr de ce qu'il vous faut ?
+        </h2>
+        <p class="text-mist mb-8 max-w-lg mx-auto">
+          Prenons 30 minutes pour comprendre vos enjeux. Je vous recommanderai le format le plus adapté — ou rien si ce n'est pas pertinent.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">
+          Réserver un appel découverte
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
