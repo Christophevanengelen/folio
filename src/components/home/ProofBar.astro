@@ -30,21 +30,21 @@ const clients = [
     <p class="text-center text-sm text-mist mb-8">
       {t('proofbar.title')}
     </p>
-    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
       {clients.map(client => (
-        <div class="flex items-center justify-center h-5 md:h-6">
+        <div class="flex items-center justify-center h-8 md:h-10">
           <img
             src={client.src}
             alt={client.name}
-            width="120"
-            height="24"
+            width="160"
+            height="40"
             loading="lazy"
             decoding="async"
-            class="h-5 md:h-6 w-auto max-w-[100px] md:max-w-[120px] object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+            class="h-8 md:h-10 w-auto max-w-[140px] md:max-w-[180px] object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
             onerror={`this.style.display='none'; this.nextElementSibling.style.display='block';`}
           />
           <span
-            class="hidden text-xs md:text-sm font-medium text-mist uppercase tracking-wider"
+            class="hidden text-sm md:text-base font-medium text-mist uppercase tracking-wider"
             aria-hidden="true"
           >
             {client.name}
