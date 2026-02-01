@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Badge from '../../components/ui/Badge.astro';
+import LocaleLayout from '../../../layouts/LocaleLayout.astro';
+import Badge from '../../../components/ui/Badge.astro';
 
 const projects = [
   {
@@ -17,7 +17,7 @@ const projects = [
     slug: 'project-2',
     title: 'Projet 2',
     tagline: 'Design System & Ops',
-    description: 'Structuration et scaling d\'un design system pour une équipe de 15 designers.',
+    description: "Structuration et scaling d'un design system pour une équipe de 15 designers.",
     role: 'Design Lead',
     year: '2023',
     tags: ['Design System', 'Design Ops'],
@@ -27,7 +27,7 @@ const projects = [
     slug: 'project-3',
     title: 'Projet 3',
     tagline: 'Transformation digitale',
-    description: 'Accompagnement stratégique et delivery d\'une refonte produit.',
+    description: "Accompagnement stratégique et delivery d'une refonte produit.",
     role: 'Product Strategist',
     year: '2023',
     tags: ['Strategy', 'Product'],
@@ -36,8 +36,8 @@ const projects = [
 ];
 ---
 
-<BaseLayout
-  title="Work"
+<LocaleLayout
+  title="Réalisations"
   description="Projets sélectionnés — des cas concrets qui illustrent mon approche de la stratégie à l'exécution."
 >
   <section class="py-[var(--space-section)]">
@@ -45,7 +45,7 @@ const projects = [
       <!-- Header -->
       <div class="max-w-2xl mb-16">
         <h1 class="text-[length:var(--text-h1)] font-semibold text-ink mb-4">
-          Work
+          Réalisations
         </h1>
         <p class="text-lg text-mist">
           Une sélection de projets qui illustrent mon approche — de la stratégie à l'exécution,
@@ -57,7 +57,7 @@ const projects = [
       <div class="space-y-6">
         {projects.map(project => (
           <a
-            href={`/work/${project.slug}`}
+            href={`/fr/work/${project.slug}`}
             class="group block bg-white rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-normal border border-transparent hover:border-accent/20"
           >
             <div class="flex flex-col md:flex-row md:items-center gap-6">
@@ -108,4 +108,4 @@ const projects = [
       </div>
     </div>
   </section>
-</BaseLayout>
+</LocaleLayout>

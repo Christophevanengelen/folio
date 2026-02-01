@@ -1,0 +1,193 @@
+---
+import LocaleLayout from '../../layouts/LocaleLayout.astro';
+import Button from '../../components/ui/Button.astro';
+
+const timeline = [
+  {
+    period: '2020 – Present',
+    title: 'Design Leader & Independent Consultant',
+    description: 'Transformation missions, product strategy, and interim leadership for startups and enterprises.'
+  },
+  {
+    period: '2016 – 2020',
+    title: 'Head of Design @ [Company]',
+    description: 'Led a team of 12 designers, created the design system, delivered 4 major products.'
+  },
+  {
+    period: '2012 – 2016',
+    title: 'Senior UX Designer @ [Agency/Startup]',
+    description: 'UX consulting for B2B SaaS clients, service design, workshop facilitation.'
+  },
+  {
+    period: '2008 – 2012',
+    title: 'UX/UI Designer',
+    description: 'Agency beginnings, varied projects, building the fundamentals.'
+  }
+];
+
+const values = [
+  {
+    title: 'Impact > Aesthetics',
+    description: "Design that doesn't solve a business problem is just decoration. I measure my work by its results."
+  },
+  {
+    title: 'Clarity > Complexity',
+    description: "Complexity is easy. Making the complex simple — that's the real work."
+  },
+  {
+    title: 'Execution > Strategy alone',
+    description: "A good strategy poorly executed is worth zero. I commit to delivery, not just slides."
+  },
+  {
+    title: 'Collaboration > Ego',
+    description: "The best solutions emerge from the collective. My role is to facilitate, not impose."
+  }
+];
+
+const howIWork = [
+  {
+    title: 'Understand before proposing',
+    description: "I take the time to understand your context, constraints, and culture. Ready-made solutions rarely work."
+  },
+  {
+    title: 'Iterate rapidly',
+    description: "Prototypes, tests, feedback, adjustments. I prefer 10 small iterations over one Big Bang."
+  },
+  {
+    title: 'Document & transfer',
+    description: "My goal is to make you autonomous. I document, train, and prepare my exit from day 1."
+  },
+  {
+    title: 'Say what needs to be said',
+    description: "I'm not here to be pleasant, but to be useful. I bring a sharp opinion, well-argued, and open to debate."
+  }
+];
+---
+
+<LocaleLayout
+  title="About"
+  description="Design leader & product strategist with 20+ years of experience. My approach: impact, clarity, execution."
+>
+  <section class="py-[var(--space-section)]">
+    <div class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)]">
+      <!-- Hero -->
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 mb-20">
+        <!-- Photo placeholder -->
+        <div class="lg:col-span-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl flex items-center justify-center">
+            <span class="text-accent/40">Photo</span>
+          </div>
+        </div>
+
+        <!-- Intro -->
+        <div class="lg:col-span-3">
+          <h1 class="text-[length:var(--text-h1)] font-semibold text-ink mb-6">
+            Christophe Van Engelen
+          </h1>
+
+          <p class="text-xl text-accent font-medium mb-6">
+            Design Leader · Product Strategist · Builder
+          </p>
+
+          <div class="prose prose-lg text-mist space-y-4 mb-8">
+            <p>
+              For 20+ years, I've helped organizations transform complex problems
+              into products that deliver. My playground: B2B SaaS, digital transformation,
+              and projects where "it's complicated" is the norm.
+            </p>
+            <p>
+              I've led design teams, created design systems, launched products from 0 to 1,
+              and supported large-scale transformations. What motivates me: the journey
+              from idea to measurable result.
+            </p>
+            <p>
+              Today, I work independently — consulting missions, interim leadership roles,
+              and entrepreneurial projects like <a href="/en/work/wejustice" class="text-accent hover:underline">WeJustice</a>.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <Button href="/en/contact" variant="primary">
+              Contact me
+            </Button>
+            <Button href="/en/work" variant="outline">
+              See my work
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mb-20">
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-8">
+          Journey
+        </h2>
+
+        <div class="space-y-6">
+          {timeline.map((item, index) => (
+            <div class="flex gap-6 md:gap-8">
+              <div class="w-32 md:w-40 flex-shrink-0">
+                <p class="text-sm font-medium text-accent">{item.period}</p>
+              </div>
+              <div class="pb-6 border-b border-cloud flex-1">
+                <h3 class="font-semibold text-ink mb-1">{item.title}</h3>
+                <p class="text-mist">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="mb-20">
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-8">
+          Values
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {values.map(value => (
+            <div class="bg-white rounded-xl p-6 border border-cloud">
+              <h3 class="font-semibold text-ink mb-2">{value.title}</h3>
+              <p class="text-mist">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- How I Work -->
+      <div class="mb-20">
+        <h2 class="text-[length:var(--text-h2)] font-semibold text-ink mb-8">
+          How I work
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {howIWork.map((item, index) => (
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-accent-subtle text-accent font-semibold flex items-center justify-center flex-shrink-0">
+                {index + 1}
+              </div>
+              <div>
+                <h3 class="font-semibold text-ink mb-1">{item.title}</h3>
+                <p class="text-mist text-sm">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-accent-subtle rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-[length:var(--text-h3)] font-semibold text-ink mb-4">
+          Want to work together?
+        </h2>
+        <p class="text-mist mb-6 max-w-lg mx-auto">
+          I'm available for consulting missions, interim leadership,
+          or collaborations on ambitious projects.
+        </p>
+        <Button href="/en/contact" variant="primary" size="lg">
+          Let's talk
+        </Button>
+      </div>
+    </div>
+  </section>
+</LocaleLayout>

@@ -1,0 +1,94 @@
+---
+import LocaleLayout from '../../../layouts/LocaleLayout.astro';
+import Badge from '../../../components/ui/Badge.astro';
+
+// Placeholder articles - will be replaced with MDX content
+const articles = [
+  {
+    slug: 'design-systems-scale',
+    title: 'How to scale a design system (for real)',
+    excerpt: "Tokens and components aren't enough. What makes the difference: governance, adoption, and culture.",
+    date: '2024-01-15',
+    readTime: '8 min',
+    tags: ['Design System', 'Design Ops']
+  },
+  {
+    slug: 'product-strategy-b2b',
+    title: 'Product strategy in B2B: pitfalls to avoid',
+    excerpt: "B2B isn't B2C with people in suits. A look at the specifics that change everything.",
+    date: '2024-01-08',
+    readTime: '6 min',
+    tags: ['Strategy', 'B2B']
+  }
+];
+
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<LocaleLayout
+  title="Notes"
+  description="Thoughts on design, product, and digital transformation."
+>
+  <section class="py-[var(--space-section)]">
+    <div class="mx-auto max-w-[var(--space-container-narrow)] px-[var(--space-gutter)]">
+      <!-- Header -->
+      <div class="mb-12">
+        <h1 class="text-[length:var(--text-h1)] font-semibold text-ink mb-4">
+          Notes
+        </h1>
+        <p class="text-lg text-mist">
+          Reflections, lessons learned, and sharp opinions on design,
+          product, and digital transformation.
+        </p>
+      </div>
+
+      <!-- Articles list -->
+      {articles.length > 0 ? (
+        <div class="space-y-8">
+          {articles.map(article => (
+            <a
+              href={`/en/notes/${article.slug}`}
+              class="group block"
+            >
+              <article class="py-6 border-b border-cloud">
+                <div class="flex flex-wrap items-center gap-3 mb-3">
+                  <time class="text-sm text-mist" datetime={article.date}>
+                    {formatDate(article.date)}
+                  </time>
+                  <span class="text-silver">·</span>
+                  <span class="text-sm text-mist">{article.readTime}</span>
+                </div>
+
+                <h2 class="text-xl font-semibold text-ink mb-2 group-hover:text-accent transition-colors">
+                  {article.title}
+                </h2>
+
+                <p class="text-mist mb-4">
+                  {article.excerpt}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {article.tags.map(tag => (
+                    <Badge variant="muted">{tag}</Badge>
+                  ))}
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-mist">
+            No articles published yet. Check back soon!
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</LocaleLayout>

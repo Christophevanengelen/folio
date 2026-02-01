@@ -1,0 +1,10 @@
+---
+import CaseStudyLayout from '../../../layouts/CaseStudyLayout.astro';
+
+// Import the MDX content - TODO: create EN version
+import WeJusticeContent, { frontmatter } from '../../../content/projects/wejustice.mdx';
+---
+
+<CaseStudyLayout frontmatter={frontmatter}>
+  <WeJusticeContent />
+</CaseStudyLayout>

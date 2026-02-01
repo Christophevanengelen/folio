@@ -1,12 +1,23 @@
 ---
+import { getLocaleFromPath, type Locale, getLocalizedPath } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale: propLocale } = Astro.props;
+const locale = propLocale || getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-  { href: '/work', label: 'Work' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/notes', label: 'Notes' },
-  { href: '/contact', label: 'Contact' },
+  { href: getLocalizedPath('/work', locale), label: t('nav.work') },
+  { href: getLocalizedPath('/services', locale), label: t('nav.services') },
+  { href: getLocalizedPath('/about', locale), label: t('nav.about') },
+  { href: getLocalizedPath('/notes', locale), label: t('nav.notes') },
+  { href: getLocalizedPath('/contact', locale), label: t('nav.contact') },
 ];
 
 const socialLinks = [
@@ -33,18 +44,18 @@ const socialLinks = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
       <!-- Brand -->
       <div>
-        <a href="/" class="text-white font-semibold text-lg hover:text-accent transition-colors">
+        <a href={getLocalizedPath('/', locale)} class="text-white font-semibold text-lg hover:text-accent transition-colors">
           Christophe Van Engelen
         </a>
         <p class="mt-3 text-silver text-sm leading-relaxed">
-          Design leader & product strategist.<br />
-          Du cadrage à la mise en production.
+          {t('footer.tagline')}<br />
+          {t('footer.tagline2')}
         </p>
       </div>
 
       <!-- Navigation -->
       <div>
-        <h3 class="text-white font-medium mb-4">Navigation</h3>
+        <h3 class="text-white font-medium mb-4">{t('footer.navigation')}</h3>
         <ul class="space-y-2" role="list">
           {navLinks.map(link => (
             <li>
@@ -61,7 +72,7 @@ const socialLinks = [
 
       <!-- Contact -->
       <div>
-        <h3 class="text-white font-medium mb-4">Contact</h3>
+        <h3 class="text-white font-medium mb-4">{t('footer.contact')}</h3>
         <a
           href="mailto:cve@hi-def.be"
           class="text-silver text-sm hover:text-white transition-colors"
@@ -87,10 +98,10 @@ const socialLinks = [
     <!-- Bottom bar -->
     <div class="mt-12 pt-8 border-t border-slate flex flex-col sm:flex-row justify-between items-center gap-4">
       <p class="text-silver text-sm">
-        &copy; {currentYear} Christophe Van Engelen. Tous droits réservés.
+        &copy; {currentYear} Christophe Van Engelen. {t('footer.rights')}
       </p>
       <p class="text-mist text-xs">
-        Construit avec Astro · Déployé sur Cloudflare Pages
+        {t('footer.built')}
       </p>
     </div>
   </div>

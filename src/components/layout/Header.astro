@@ -1,26 +1,39 @@
 ---
+import { getLocaleFromPath, getAlternatePath, LOCALES, type Locale, getLocalizedPath } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale: propLocale } = Astro.props;
+const locale = propLocale || getLocaleFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/work', label: 'Work' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/notes', label: 'Notes' },
+  { href: getLocalizedPath('/work', locale), label: t('nav.work') },
+  { href: getLocalizedPath('/services', locale), label: t('nav.services') },
+  { href: getLocalizedPath('/about', locale), label: t('nav.about') },
+  { href: getLocalizedPath('/notes', locale), label: t('nav.notes') },
 ];
 
 function isActive(href: string): boolean {
-  if (href === '/') return currentPath === '/';
   return currentPath.startsWith(href);
 }
+
+// Language switcher
+const otherLocale: Locale = locale === 'fr' ? 'en' : 'fr';
+const switchPath = getAlternatePath(currentPath, otherLocale);
 ---
 
 <header class="sticky top-0 z-50 bg-snow/80 backdrop-blur-md border-b border-cloud">
   <nav class="mx-auto max-w-[var(--space-container)] px-[var(--space-gutter)] h-16 flex items-center justify-between">
     <!-- Logo -->
     <a
-      href="/"
+      href={getLocalizedPath('/', locale)}
       class="font-semibold text-ink hover:text-accent transition-colors duration-fast"
-      aria-label="Christophe Van Engelen - Accueil"
+      aria-label={t('header.logo.aria')}
     >
       CVE
     </a>
@@ -45,19 +58,31 @@ function isActive(href: string): boolean {
       ))}
     </ul>
 
-    <!-- CTA Button -->
-    <a
-      href="/contact"
-      class="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors duration-fast"
-    >
-      Contact
-    </a>
+    <!-- Right side: Language + CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <!-- Language Switcher -->
+      <a
+        href={switchPath}
+        class="text-sm font-medium text-mist hover:text-ink transition-colors duration-fast px-2 py-1 rounded border border-cloud hover:border-silver"
+        aria-label={`Switch to ${LOCALES[otherLocale]}`}
+      >
+        {otherLocale.toUpperCase()}
+      </a>
+
+      <!-- CTA Button -->
+      <a
+        href={getLocalizedPath('/contact', locale)}
+        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors duration-fast"
+      >
+        {t('nav.contact')}
+      </a>
+    </div>
 
     <!-- Mobile Menu Button -->
     <button
       type="button"
       class="md:hidden p-2 text-mist hover:text-ink transition-colors"
-      aria-label="Ouvrir le menu"
+      aria-label={t('header.menu.open')}
       aria-expanded="false"
       aria-controls="mobile-menu"
       id="mobile-menu-button"
@@ -90,12 +115,19 @@ function isActive(href: string): boolean {
           </a>
         </li>
       ))}
-      <li class="pt-2">
+      <li class="pt-2 flex items-center justify-between">
         <a
-          href="/contact"
-          class="block w-full text-center py-3 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors"
+          href={getLocalizedPath('/contact', locale)}
+          class="flex-1 text-center py-3 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors mr-3"
         >
-          Contact
+          {t('nav.contact')}
+        </a>
+        <a
+          href={switchPath}
+          class="px-4 py-3 text-sm font-medium text-mist hover:text-ink border border-cloud rounded-lg"
+          aria-label={`Switch to ${LOCALES[otherLocale]}`}
+        >
+          {otherLocale.toUpperCase()}
         </a>
       </li>
     </ul>

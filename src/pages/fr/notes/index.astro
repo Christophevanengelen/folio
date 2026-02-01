@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Badge from '../../components/ui/Badge.astro';
+import LocaleLayout from '../../../layouts/LocaleLayout.astro';
+import Badge from '../../../components/ui/Badge.astro';
 
 // Placeholder articles - will be replaced with MDX content
 const articles = [
   {
     slug: 'design-systems-scale',
     title: 'Comment scaler un design system (vraiment)',
-    excerpt: 'Les tokens et composants ne suffisent pas. Ce qui fait la différence : la gouvernance, l\'adoption, et la culture.',
+    excerpt: "Les tokens et composants ne suffisent pas. Ce qui fait la différence : la gouvernance, l'adoption, et la culture.",
     date: '2024-01-15',
     readTime: '8 min',
     tags: ['Design System', 'Design Ops']
@@ -15,7 +15,7 @@ const articles = [
   {
     slug: 'product-strategy-b2b',
     title: 'Product strategy en B2B : les pièges à éviter',
-    excerpt: 'Le B2B n\'est pas du B2C avec des gens en costume. Retour sur les spécificités qui changent tout.',
+    excerpt: "Le B2B n'est pas du B2C avec des gens en costume. Retour sur les spécificités qui changent tout.",
     date: '2024-01-08',
     readTime: '6 min',
     tags: ['Strategy', 'B2B']
@@ -31,7 +31,7 @@ function formatDate(dateStr: string): string {
 }
 ---
 
-<BaseLayout
+<LocaleLayout
   title="Notes"
   description="Réflexions sur le design, le produit, et la transformation digitale."
 >
@@ -53,7 +53,7 @@ function formatDate(dateStr: string): string {
         <div class="space-y-8">
           {articles.map(article => (
             <a
-              href={`/notes/${article.slug}`}
+              href={`/fr/notes/${article.slug}`}
               class="group block"
             >
               <article class="py-6 border-b border-cloud">
@@ -91,4 +91,4 @@ function formatDate(dateStr: string): string {
       )}
     </div>
   </section>
-</BaseLayout>
+</LocaleLayout>

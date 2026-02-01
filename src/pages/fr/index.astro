@@ -1,0 +1,23 @@
+---
+import LocaleLayout from '../../layouts/LocaleLayout.astro';
+import Hero from '../../components/home/Hero.astro';
+// import ProofBar from '../../components/home/ProofBar.astro'; // Masqué - en attente de vrais logos clients
+import ValueProps from '../../components/home/ValueProps.astro';
+import FeaturedWork from '../../components/home/FeaturedWork.astro';
+import ServicesPreview from '../../components/home/ServicesPreview.astro';
+// import Testimonial from '../../components/home/Testimonial.astro'; // Masqué - en attente de vrais témoignages
+import CTASection from '../../components/home/CTASection.astro';
+---
+
+<LocaleLayout
+  title="Design Leader & Product Strategist"
+  description="Je transforme la complexité en produits qui livrent. Design leader & product strategist — du cadrage à la mise en production (B2B SaaS, transformation digitale)."
+>
+  <Hero />
+  {/* <ProofBar /> */}
+  <ValueProps />
+  <FeaturedWork />
+  <ServicesPreview />
+  {/* <Testimonial /> */}
+  <CTASection />
+</LocaleLayout>

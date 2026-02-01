@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/ui/Button.astro';
-import Badge from '../components/ui/Badge.astro';
+import LocaleLayout from '../../layouts/LocaleLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Badge from '../../components/ui/Badge.astro';
 
 const services = [
   {
@@ -67,7 +67,7 @@ const services = [
 ];
 ---
 
-<BaseLayout
+<LocaleLayout
   title="Services"
   description="Discovery, Design Ops, Leadership — des formats adaptés à vos besoins, de la mission ponctuelle au leadership long terme."
 >
@@ -168,10 +168,10 @@ const services = [
         <p class="text-mist mb-8 max-w-lg mx-auto">
           Prenons 30 minutes pour comprendre vos enjeux. Je vous recommanderai le format le plus adapté — ou rien si ce n'est pas pertinent.
         </p>
-        <Button href="/contact" variant="primary" size="lg">
+        <Button href="/fr/contact" variant="primary" size="lg">
           Réserver un appel découverte
         </Button>
       </div>
     </div>
   </section>
-</BaseLayout>
+</LocaleLayout>
